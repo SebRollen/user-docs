@@ -143,10 +143,12 @@ These are the events that are the expected results of actions you may have taken
 - `fill`: Sent when your order has been completely filled.
     - *timestamp*: The time at which the order was filled.
     - *price*: The average price per share at which the order was filled.
+    - *qty*: The absolute value of the change in the size of your position, in shares.
     - *position_qty*: The size of your total position, after this fill event, in shares. Positive for long positions, negative for short positions.
 - `partial_fill`: Sent when a number of shares less than the total remaining quantity on your order has been filled.
     - *timestamp*: The time at which the shares were filled.
     - *price*: The average price per share at which the shares were filled.
+    - *qty*: The absolute value of the change in the size of your position, in shares.
     - *position_qty*: The size of your total position, after this fill event, in shares. Positive for long positions, negative for short positions.
 - `canceled`: Sent when your requested cancelation of an order is processed.
     - *timestamp*: The time at which the order was canceled.
@@ -180,6 +182,7 @@ An example message sent over the `trade_updates` stream would look like:
         "event": "fill",
         "price": "179.08",
         "timestamp": "2018-02-28T20:38:22Z",
+        "qty": "100",
         "position_qty": "100",
         "order": {
             "id": "7b7653c4-7468-494a-aeb3-d5f255789473",
